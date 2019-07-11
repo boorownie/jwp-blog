@@ -20,4 +20,5 @@ dependencies {
         exclude group: 'junit'
     }
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 }

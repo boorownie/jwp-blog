@@ -21,6 +21,7 @@ public class ArticleController {
     @PostMapping("articles")
     public String saveArticle(Article article, Model model){
         model.addAttribute(article);
+        articleRepository.add(article);
         return "article";
     }
 }

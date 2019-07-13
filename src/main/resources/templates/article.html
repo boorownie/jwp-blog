@@ -77,9 +77,9 @@
     </header>
 
     <div class="about-cover card no-border ">
-        <div class="cover-img overlay-dark bg" th:style="'background-image:url('+ ${coverUrl} +');'" style="background-image: url('images/pages/index/study.jpg')">
+        <div class="cover-img overlay-dark bg" th:style="'background-image:url('+ ${article.coverUrl} +');'" style="background-image: url('images/pages/index/study.jpg')">
             <div class="padding-30">
-                <h1 class="text-center cover-title" th:text="${title}">목적의식 있는 연습을 통한 효과적인 학습</h1>
+                <h1 class="text-center cover-title" th:text="${article.title}">목적의식 있는 연습을 통한 효과적인 학습</h1>
             </div>
         </div>
     </div>
@@ -167,7 +167,7 @@
 <script src="js/index.js"></script>
 <script>
     /*<![CDATA[*/
-    const initValue = "[[${contents}]]";
+    const initValue = "[[${article.contents}]]";
 
     const viewer = tui.Editor.factory({
         el: document.querySelector('#viewerSection'),

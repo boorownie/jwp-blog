@@ -3,12 +3,9 @@ package techcourse.myblog.web;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
+import techcourse.myblog.domain.Article;
 import techcourse.myblog.domain.ArticleRepository;
-
-import java.util.Map;
 
 @Controller
 public class ArticleController {
@@ -22,8 +19,8 @@ public class ArticleController {
     public String newArticle(){ return "article-edit"; }
 
     @PostMapping("articles")
-    public String saveArticle(@RequestParam Map<String, String> requestParams, Model model){
-        model.addAllAttributes(requestParams);
+    public String saveArticle(Article article, Model model){
+        model.addAttribute(article);
         return "article";
     }
 }

@@ -21,4 +21,6 @@ dependencies {
     }
 	testImplementation 'org.springframework.boot:spring-boot-starter-webflux'
 	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
+	compile("org.springframework.boot:spring-boot-devtools")
+
 }

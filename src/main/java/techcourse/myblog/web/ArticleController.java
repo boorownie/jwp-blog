@@ -13,7 +13,10 @@ public class ArticleController {
     private ArticleRepository articleRepository;
 
     @GetMapping("/")
-    public String index(){ return "index"; }
+    public String index(Model model){
+        model.addAttribute("articles",articleRepository.findAll());
+        return "index";
+    }
 
     @GetMapping(value = {"articles/new","writing"})
     public String newArticle(){ return "article-edit"; }
@@ -23,5 +26,15 @@ public class ArticleController {
         model.addAttribute(article);
         articleRepository.add(article);
         return "article";
+    }
+
+    @GetMapping("articles/{articlesId}")
+    public String articlesId(@PathVariable String articlesId, Model model) {
+        Article article = articleRepository.getById(Integer.parseInt(articlesId));
+        if (article != null) {
+            model.addAttribute(article);
+            return "article";
+        }
+        return "error";
     }
 }

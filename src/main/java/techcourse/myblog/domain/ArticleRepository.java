@@ -16,4 +16,14 @@ public class ArticleRepository {
     public void add(Article article){
         articles.add(article);
     }
+
+    public Article getById(int id){
+        Article result = null;
+        for( Article article : articles){
+            if(article.getId() == id){
+                result = article;
+            }
+        }
+        return result;
+    }
 }

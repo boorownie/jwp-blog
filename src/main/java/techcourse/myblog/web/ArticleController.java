@@ -6,6 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import techcourse.myblog.domain.Article;
 import techcourse.myblog.domain.ArticleRepository;
+import java.util.Collections;
+import java.util.List;
 
 @Controller
 public class ArticleController {
@@ -14,7 +16,9 @@ public class ArticleController {
 
     @GetMapping("/")
     public String index(Model model){
-        model.addAttribute("articles",articleRepository.findAll());
+        List<Article> reversedList = articleRepository.findAll();
+        Collections.reverse(reversedList);
+        model.addAttribute("articles",reversedList);
         return "index";
     }
 

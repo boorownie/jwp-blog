@@ -62,4 +62,14 @@ public class ArticleController {
         }
         return "article";
     }
+
+    @DeleteMapping("articles/{articleId}")
+    public String deleteArticle(@PathVariable String articleId,Model model){
+        Article target = articleRepository.getById(Integer.parseInt(articleId));
+        System.out.println("delete!");
+        if(target != null){
+            articleRepository.remove(target);
+        }
+        return "index";
+    }
 }

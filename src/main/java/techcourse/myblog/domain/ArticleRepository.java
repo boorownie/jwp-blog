@@ -17,6 +17,9 @@ public class ArticleRepository {
         articles.add(article);
     }
 
+    public void remove(Article article){
+        articles.remove(article);
+    }
     public Article getById(int id){
         Article result = null;
         for( Article article : articles){

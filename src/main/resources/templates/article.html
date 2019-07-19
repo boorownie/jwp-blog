@@ -52,6 +52,9 @@
     <div class="container-fluid max-width-lg mx-auto mrg-vertical-30 padding-30">
         <div class="row">
             <div class="col-lg-10 mx-auto">
+                <a href="#" class="float-right pointer btn btn-icon">
+                    <i class="ti-close text-dark font-size-16 pdd-horizontal-5" onclick="deleteArticle()"></i>
+                </a>
                 <a th:href="${'/articles/'+article.id+'/edit'}" class="float-right pointer btn btn-icon">
                     <i class="ti-pencil text-dark font-size-16 pdd-horizontal-5"></i>
                 </a>
@@ -146,6 +149,25 @@
         height: '200px'
     });
     /*]]>*/
+</script>
+<script>
+    function deleteArticle() {
+        if(confirm("are you sure!?")) {
+            var form = document.createElement('form');
+            var del = document.createElement('input');
+            del.type = "hidden";
+            del.value = "delete";
+            del.name = "_method";
+
+            form.method = 'post';
+            form.action = window.location.href;
+            form.appendChild(del);
+
+            document.body.appendChild(form);
+            form.submit();
+            window.location.href = "/";
+        }
+    }
 </script>
 </body>
 </html>

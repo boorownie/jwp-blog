@@ -29,16 +29,37 @@ public class ArticleController {
     public String saveArticle(Article article, Model model){
         model.addAttribute(article);
         articleRepository.add(article);
-        return "article";
+        return "redirect:/articles/"+article.getId();
     }
 
-    @GetMapping("articles/{articlesId}")
-    public String articlesId(@PathVariable String articlesId, Model model) {
-        Article article = articleRepository.getById(Integer.parseInt(articlesId));
+    @GetMapping("articles/{articleId}")
+    public String articlesId(@PathVariable String articleId, Model model) {
+        Article article = articleRepository.getById(Integer.parseInt(articleId));
         if (article != null) {
             model.addAttribute(article);
             return "article";
         }
         return "error";
+    }
+
+    @GetMapping("articles/{articleId}/edit")
+    public String articleEdit(@PathVariable String articleId, Model model) {
+        Article article = articleRepository.getById(Integer.parseInt(articleId));
+
+        if(article != null){
+            model.addAttribute(article);
+            return "article-edit";
+        }
+        return "error";
+    }
+
+    @PutMapping("articles/{articleId}")
+    public String saveEditArticle(@PathVariable String articleId, Article article, Model model) {
+        Article target = articleRepository.getById(Integer.parseInt(articleId));
+        if (article != null) {
+            target.update(article);
+            model.addAttribute("article", target);
+        }
+        return "article";
     }
 }

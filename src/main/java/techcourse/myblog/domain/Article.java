@@ -28,6 +28,12 @@ public class Article {
         return id;
     }
 
+    public void update(Article article){
+        this.title = article.title;
+        this.coverUrl = article.coverUrl;
+        this.contents = article.contents;
+    }
+
     public void setId(int id) {
         this.id = id;
     }
